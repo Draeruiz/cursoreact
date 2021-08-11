@@ -36,6 +36,7 @@ const [tasks, setTasks] = useState([
 
 const nombre = 'Elvia Ruiz Beltrán'
 const x = true
+const valor=10
 
   return (
     <div>
