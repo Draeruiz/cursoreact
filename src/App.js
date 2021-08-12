@@ -34,6 +34,11 @@ const [tasks, setTasks] = useState([
     }
 ])
 
+const deleteTask=(id)=>{
+ // console.log('Delete',id);
+ setTasks(tasks.filter((task)=>task.id!==id))
+}
+
 const nombre = 'Elvia Ruiz Beltrán'
 const x = true
 const valor=10
@@ -42,7 +47,7 @@ const valor=10
     <div>
     <Header title='Recordatorios de Elvia Ruiz'/>{nombre}
 
-    <Tasks tasks={tasks}/>
+    <Tasks tasks={tasks} onDelete={deleteTask}/>
 
     </div>
   );
