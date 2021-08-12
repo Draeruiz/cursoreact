@@ -3,6 +3,7 @@
 import {useState} from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 /* En esta parte del código se agrega un hook useState que es una función que epermite acceder alas funcionalida des de React
   useState es para añadir un etado interno a nuestros componentes par ahacerlos dináicos e interactivos
 */
@@ -38,6 +39,18 @@ const deleteTask=(id)=>{
  // console.log('Delete',id);
  setTasks(tasks.filter((task)=>task.id!==id))
 }
+const toggleReminder=(id)=>{
+   console.log('Reminder',id);
+  //setTasks(tasks.filter((task)=>task.id!==id))
+  //Cambiar formado al hacer doble click
+setTasks(tasks.map((task)=>task.id===id ? {...task,reminder:!task.reminder} : task))
+
+ }
+ const addTask=(task)=>{
+   console.log(task);
+
+ }
+
 
 const nombre = 'Elvia Ruiz Beltrán'
 const x = true
@@ -45,9 +58,10 @@ const valor=10
 
   return (
     <div>
-    <Header title='Recordatorios de Elvia Ruiz'/>{nombre}
-
-    <Tasks tasks={tasks} onDelete={deleteTask}/>
+   
+    <Header title={'Recordatorios de ' + nombre}/>
+    <AddTask onAdd={ addTask}/>
+    <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
 
     </div>
   );
